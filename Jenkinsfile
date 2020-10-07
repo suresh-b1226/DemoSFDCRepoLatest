@@ -33,9 +33,9 @@ node {
         
           stage('Push To Test Org') {
               if (isUnix()) {
-                    rc = sh returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
+                    rc = sh returnStatus: true, script: "\"${toolbelt}\" force:source:deploy --sourcepath src"
               }else{
-                  rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
+                  rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:deploy --sourcepath src"
               }
             if (rc != 0) {
                 error 'push failed'
